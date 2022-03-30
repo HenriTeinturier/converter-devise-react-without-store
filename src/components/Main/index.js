@@ -4,7 +4,6 @@ import './main.scss';
 
 // composant:
 function Main({ currencies }) {
-  console.log(currencies);
   return (
     <main className="main">
       <h2 className="main-title">Currencies</h2>

@@ -7,8 +7,6 @@ import Header from '../Header';
 import Main from '../Main';
 import Footer from '../Footer';
 
-console.log(currencies);
-
 // == Composant
 function Converter() {
   return (

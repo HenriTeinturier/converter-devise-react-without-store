@@ -5,10 +5,10 @@
   height: 330px;
   color: vars.$PrincipaleColor;
   font-size: 1.5rem;
+  font-weight: 500;
 
   &-title {
     padding: 1.5rem 1rem 1rem 1rem;
-    font-weight: bold;
     border-bottom: 1px solid vars.$AlternativeColor ;
   }
 
