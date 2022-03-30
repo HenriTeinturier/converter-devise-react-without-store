@@ -13,20 +13,15 @@
   }
 
   &-currencies {
-    
     &-item {
       padding: 1rem;
       border-bottom: 1px solid vars.$AlternativeColor ;
       transition: background-color 1s;
-      
   }
     &-item:hover {
       background-color: vars.$AlternativeColor;
       transition: background-color 0.2s;
     }
-
-   
-    
   }
 
 }

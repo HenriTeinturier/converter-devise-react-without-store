@@ -14,7 +14,9 @@ function Converter() {
   return (
     <div className="converter">
       <Header />
-      <Main />
+      <Main
+        currencies={currencies}
+      />
       <Footer />
     </div>
   );
