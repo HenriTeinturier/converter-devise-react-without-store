@@ -13,7 +13,7 @@ function Main({ currencies }) {
             className="main-currencies-item"
             key={item.name}
             onClick={() => {
-              console.log(item.rate);
+              console.log(item.rate, item.name);
             }}
           >
             {item.name}
