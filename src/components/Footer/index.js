@@ -5,9 +5,10 @@ import './footer.scss';
 // composant:
 function Footer() {
   return (
-    <div>
-      <h1>Footer Converter</h1>
-    </div>
+    <footer className="footer">
+      <p className="footer-result">1.09</p>
+      <p className="footer-currency">United States Dollar</p>
+    </footer>
   );
 }
 

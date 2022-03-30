@@ -2,13 +2,19 @@
 
 .header {
   background-color: vars.$PrincipaleColor;
+  height: 150px;
+  color: white;
+  text-align: center;
+  padding-top: 40px;
 
   &-title {
-
+    font-size: 2.5rem;
+    font-weight: bold;
+    padding-bottom: 1rem;
   }
 
   &-montant {
-
+    font-size: 1.5em;
   }
 
 }

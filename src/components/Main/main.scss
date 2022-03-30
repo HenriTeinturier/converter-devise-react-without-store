@@ -1,0 +1,34 @@
+@use 'src/styles/vars';
+
+.main {
+  overflow-y: scroll;
+  height: 330px;
+  color: vars.$PrincipaleColor;
+  font-size: 1.5rem;
+
+  &-title {
+    padding: 1.5rem 1rem 1rem 1rem;
+    font-weight: bold;
+    border-bottom: 1px solid vars.$AlternativeColor ;
+  }
+
+  &-currencies {
+    
+    &-item {
+      padding: 1rem;
+      border-bottom: 1px solid vars.$AlternativeColor ;
+      transition: background-color 1s;
+      
+  }
+    &-item:hover {
+      background-color: vars.$AlternativeColor;
+      transition: background-color 0.2s;
+    }
+
+   
+    
+  }
+
+}
+
+
