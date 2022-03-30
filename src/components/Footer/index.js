@@ -3,11 +3,12 @@ import PropTypes from 'prop-types';
 import './footer.scss';
 
 // composant:
-function Footer() {
+function Footer({ rate, currency, toConvert }) {
+  // console.log(toConvert, rate, currency);
   return (
     <footer className="footer">
-      <p className="footer-result">1.09</p>
-      <p className="footer-currency">United States Dollar</p>
+      <p className="footer-result">{toConvert * rate}</p>
+      <p className="footer-currency">{currency}</p>
     </footer>
   );
 }

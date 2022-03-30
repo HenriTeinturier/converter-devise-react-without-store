@@ -9,7 +9,13 @@ function Main({ currencies }) {
       <h2 className="main-title">Currencies</h2>
       <ol className="main-currencies">
         {currencies.map((item) => (
-          <li className="main-currencies-item" key={item.name}>
+          <li
+            className="main-currencies-item"
+            key={item.name}
+            onClick={() => {
+              console.log(item.rate);
+            }}
+          >
             {item.name}
           </li>
         ))}
