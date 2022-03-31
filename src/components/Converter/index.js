@@ -10,7 +10,7 @@ import Currencies from '../Main';
 import Amount from '../Footer';
 
 // montant à convertir
-const toConvert = 1;
+const amountToConvert = 1;
 // temporaire: currencyToConvert
 const currencyToConvert = 'Unidted States Dollar';
 
@@ -19,14 +19,14 @@ function Converter() {
   return (
     <div className="converter">
       <Header
-        toConvert={toConvert}
+        amountToConvert={amountToConvert}
         currency="euro"
       />
       <Currencies
         currencies={currenciesList}
       />
       <Amount
-        toConvert={toConvert}
+        amountToConvert={amountToConvert}
         rate={1.5}
         currency={currencyToConvert}
       />

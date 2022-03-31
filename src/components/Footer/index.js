@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import './footer.scss';
 
 // composant:
-function Amount({ rate, currency, toConvert }) {
-  // console.log(toConvert, rate, currency);
+function Amount({ rate, currency, amountToConvert }) {
+  // console.log(amountToConvert, rate, currency);
   return (
     <footer className="amount">
-      <p className="amount-value">{toConvert * rate}</p>
+      <p className="amount-value">{amountToConvert * rate}</p>
       <p className="amount-currency">{currency}</p>
     </footer>
   );
@@ -16,7 +16,7 @@ function Amount({ rate, currency, toConvert }) {
 Amount.propTypes = {
   rate: PropTypes.number.isRequired,
   currency: PropTypes.string.isRequired,
-  toConvert: PropTypes.number.isRequired,
+  amountToConvert: PropTypes.number.isRequired,
 };
 
 export default Amount;
