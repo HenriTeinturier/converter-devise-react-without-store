@@ -75,18 +75,24 @@ class Converter extends React.Component {
 
   handleClick() {
     // this.setState({ isOpen: true });
-    if (this.state.isOpen) {
-      this.setState({ isOpen: false });
-    }
-    else {
-      this.setState({ isOpen: true });
-    }
+    // if (this.state.isOpen) {
+    //   this.setState({ isOpen: false });
+    // }
+    // else {
+    //   this.setState({ isOpen: true });
+    // }
+    const { isOpen } = this.state;
+    this.setState({
+      isOpen: !isOpen, // inverse la valeur de isOpen
+    });
   }
 
   // Maintenant, pour lire une propriété du state, on fere :
   // this.state.isOpen
   // => On adapte donc l'affichage conditionnel en se basant sur notre state
   render() {
+    // le linter nous previent qu'il faut faire du desctructuring avec this.state.isOpen
+    const { isOpen } = this.state;
     return (
       <div className="converter">
         <Header
@@ -94,7 +100,7 @@ class Converter extends React.Component {
           currency="euro"
         />
         <button type="button" onClick={this.handleClick}>Afficher / Cacher les devises</button>
-        {this.state.isOpen && <Currencies currencies={currenciesList} />}
+        {isOpen && <Currencies currencies={currenciesList} />}
         <Amount
           amountToConvert={amountToConvert}
           rate={1.69}
