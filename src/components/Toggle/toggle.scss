@@ -10,6 +10,7 @@
   color: vars.$mainColor;
   // on veut remonter le bouton pour qu'il soit sur le Header
   margin-top: -25px;
+  transition: transform 0.5s;
   
 
   // au hover on inverse les couleurs
@@ -21,6 +22,8 @@
   // on applique une rotation sur le bouton si les devises sont visibles
   // .toggle.toggle--open
   &.toggle--open {
+    
     transform: rotate(90deg);
+    transition: transform 0.5s;
   }
 }
