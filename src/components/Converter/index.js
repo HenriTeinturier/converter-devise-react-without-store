@@ -100,7 +100,7 @@ class Converter extends React.Component {
           amountToConvert={amountToConvert}
           currency="euro"
         />
-        <Toggle open={isOpen} />
+        <Toggle open={isOpen} handleClick={this.handleClick} />
         {isOpen && <Currencies currencies={currenciesList} />}
         <Amount
           amountToConvert={amountToConvert}

@@ -4,8 +4,10 @@ import PropTypes from 'prop-types';
 import './toggle.scss';
 
 // == Composant
-function Toggle({ open}) {
+function Toggle({ open, handleClick }) {
+  // on récupère le state.isOpen avec la props open
   let cssClass;
+  // handleClick();
   if (open) {
     cssClass = 'toggle toggle--open';
   }
@@ -15,9 +17,9 @@ function Toggle({ open}) {
 
   return (
     <button
+      onClick={handleClick}
       className={cssClass}
       type="button"
-      // onClick={this.handleClick}
     >
       =
     </button>
@@ -29,4 +31,5 @@ export default Toggle;
 
 Toggle.propTypes = {
   open: PropTypes.bool.isRequired,
+  handleClick: PropTypes.func.isRequired,
 };
