@@ -18,7 +18,11 @@ const currencyToConvert = 'Unidted States Dollar';
 function Converter() {
   // permet de  faire affichage conditionnel
   // ici isOpen pour le composant Currencies
-  const isOpen = true;
+  let isOpen = true;
+
+  const handleClick = () => {
+    if (isOpen) { isOpen = false; console.log('false') } else { isOpen = true; console.log('true') }
+  };
 
   return (
     <div className="converter">
@@ -26,6 +30,7 @@ function Converter() {
         amountToConvert={amountToConvert}
         currency="euro"
       />
+      <button type="button" onClick={handleClick}>Afficher / Cacher les devises</button>
       {isOpen && <Currencies currencies={currenciesList} />}
       <Amount
         amountToConvert={amountToConvert}
