@@ -62,12 +62,30 @@ class Converter extends React.Component {
     this.state = {
       isOpen: false,
     };
+
+    // On vient améliorer notre handler en forcant le context du this
+    // Ainsi, on s'assure que même en dehors de son context de base (la classe),
+    // le mot clé this y fera quand même reference
+    // necessaire si pas de fonction fleché dans le onclick
+    // donc necessaire si onClick{this.handleClick}
+    // et pas necessaire si: onClick={() => this.handleClick()}
+    this.handleClick = this.handleClick.bind(this);
+    // ceci n'est pas lié à React mais de façon general à la gestion des this de js
   }
 
   handleClick() {
-    if (this.isOpen) { this.isOpen = false; console.log('false') } else { isOpen = true; console.log('true') }
+    // this.setState({ isOpen: true });
+    if (this.state.isOpen) {
+      this.setState({ isOpen: false });
+    }
+    else {
+      this.setState({ isOpen: true });
+    }
   }
 
+  // Maintenant, pour lire une propriété du state, on fere :
+  // this.state.isOpen
+  // => On adapte donc l'affichage conditionnel en se basant sur notre state
   render() {
     return (
       <div className="converter">
@@ -76,7 +94,7 @@ class Converter extends React.Component {
           currency="euro"
         />
         <button type="button" onClick={this.handleClick}>Afficher / Cacher les devises</button>
-        {this.isOpen && <Currencies currencies={currenciesList} />}
+        {this.state.isOpen && <Currencies currencies={currenciesList} />}
         <Amount
           amountToConvert={amountToConvert}
           rate={1.69}
