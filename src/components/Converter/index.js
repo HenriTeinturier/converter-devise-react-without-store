@@ -10,6 +10,7 @@ import './converter.scss';
 import Header from '../Header';
 import Currencies from '../Main';
 import Amount from '../Footer';
+import Toggle from '../Toggle';
 
 // montant à convertir
 const amountToConvert = 1;
@@ -99,7 +100,7 @@ class Converter extends React.Component {
           amountToConvert={amountToConvert}
           currency="euro"
         />
-        <button type="button" onClick={this.handleClick}>Afficher / Cacher les devises</button>
+        <Toggle open={isOpen} />
         {isOpen && <Currencies currencies={currenciesList} />}
         <Amount
           amountToConvert={amountToConvert}
