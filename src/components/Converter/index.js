@@ -12,11 +12,6 @@ import Currencies from '../Main';
 import Amount from '../Footer';
 import Toggle from '../Toggle';
 
-// montant à convertir
-const amountToConvert = 1;
-// temporaire: currencyToConvert
-const currencyToConvert = 'Unidted States Dollar';
-
 // == Composant
 // function Converter() {
 //   // permet de  faire affichage conditionnel
@@ -62,7 +57,15 @@ class Converter extends React.Component {
     // On crée notre state ici
     this.state = {
       isOpen: false,
+      amountToConvert: 1,
+      rate: 1.69,
+      currencyToConvert: 'Unidted States Dollar',
     };
+
+    // // montant à convertir
+    // const amountToConvert = 1;
+    // // temporaire: currencyToConvert
+    // const currencyToConvert = 'Unidted States Dollar';
 
     // On vient améliorer notre handler en forcant le context du this
     // Ainsi, on s'assure que même en dehors de son context de base (la classe),
@@ -93,7 +96,9 @@ class Converter extends React.Component {
   // => On adapte donc l'affichage conditionnel en se basant sur notre state
   render() {
     // le linter nous previent qu'il faut faire du desctructuring avec this.state.isOpen
-    const { isOpen } = this.state;
+    const {
+      isOpen, amountToConvert, currencyToConvert, rate,
+    } = this.state;
     return (
       <div className="converter">
         <Header
@@ -104,7 +109,7 @@ class Converter extends React.Component {
         {isOpen && <Currencies currencies={currenciesList} />}
         <Amount
           amountToConvert={amountToConvert}
-          rate={1.69}
+          rate={rate}
           currency={currencyToConvert}
         />
       </div>
