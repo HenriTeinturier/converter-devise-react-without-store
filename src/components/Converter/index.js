@@ -6,6 +6,7 @@ import currenciesList from 'src/data/currencies';
 // import Local:
 import './converter.scss';
 
+
 // les composants à venir
 import Header from '../Header';
 import Currencies from '../Main';
@@ -59,7 +60,7 @@ class Converter extends React.Component {
       isOpen: false,
       amountToConvert: 1,
       rate: 1.69,
-      currencyToConvert: 'Unidted States Dollar',
+      currencyToConvert: 'United States Dollar',
     };
 
     // // montant à convertir
@@ -74,6 +75,7 @@ class Converter extends React.Component {
     // donc necessaire si onClick{this.handleClick}
     // et pas necessaire si: onClick={() => this.handleClick()}
     this.handleClick = this.handleClick.bind(this);
+    this.handleClickDevise = this.handleClickDevise.bind(this);
     // ceci n'est pas lié à React mais de façon general à la gestion des this de js
   }
 
@@ -88,6 +90,13 @@ class Converter extends React.Component {
     const { isOpen } = this.state;
     this.setState({
       isOpen: !isOpen, // inverse la valeur de isOpen
+    });
+  }
+
+  handleClickDevise(rate, name) {
+    this.setState({
+      rate: rate,
+      currencyToConvert: name,
     });
   }
 
@@ -106,7 +115,7 @@ class Converter extends React.Component {
           currency="euro"
         />
         <Toggle open={isOpen} handleClick={this.handleClick} />
-        {isOpen && <Currencies currencies={currenciesList} />}
+        {isOpen && <Currencies currencies={currenciesList} handleClickDevise={this.handleClickDevise} />}
         <Amount
           amountToConvert={amountToConvert}
           rate={rate}
