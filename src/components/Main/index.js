@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types';
 
+import Currency from './Currency';
+
 import './main.scss';
 
 // composant:
@@ -7,7 +9,7 @@ function Currencies({ currencies }) {
   return (
     <main className="currencies">
       <h2 className="currencies-title">Currencies</h2>
-      <ol className="currencies-currencies">
+      <ul className="currencies-currencies">
         {currencies.map((item) => (
           <li
             className="currencies-currencies-item"
@@ -19,7 +21,7 @@ function Currencies({ currencies }) {
             {item.name}
           </li>
         ))}
-      </ol>
+      </ul>
     </main>
   );
 }
