@@ -2,6 +2,8 @@
 import currencies from 'src/data/currencies';
 
 // import Local:
+import './converter.scss';
+
 // les composants à venir
 import Header from '../Header';
 import Main from '../Main';
