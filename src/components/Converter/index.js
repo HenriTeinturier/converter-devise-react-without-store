@@ -6,7 +6,7 @@ import './converter.scss';
 
 // les composants à venir
 import Header from '../Header';
-import Main from '../Main';
+import Currencies from '../Main';
 import Footer from '../Footer';
 
 // montant à convertir
@@ -22,7 +22,7 @@ function Converter() {
         toConvert={toConvert}
         currency="euro"
       />
-      <Main
+      <Currencies
         currencies={currencies}
       />
       <Footer

@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 import './main.scss';
 
 // composant:
-function Main({ currencies }) {
+function Currencies({ currencies }) {
   return (
-    <main className="main">
-      <h2 className="main-title">Currencies</h2>
-      <ol className="main-currencies">
+    <main className="currencies">
+      <h2 className="currencies-title">Currencies</h2>
+      <ol className="currencies-currencies">
         {currencies.map((item) => (
           <li
-            className="main-currencies-item"
+            className="currencies-currencies-item"
             key={item.name}
             onClick={() => {
               console.log(item.rate, item.name);
@@ -24,7 +24,7 @@ function Main({ currencies }) {
   );
 }
 
-Main.propTypes = {
+Currencies.propTypes = {
   currencies: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
@@ -33,4 +33,4 @@ Main.propTypes = {
   ).isRequired,
 };
 
-export default Main;
+export default Currencies;
