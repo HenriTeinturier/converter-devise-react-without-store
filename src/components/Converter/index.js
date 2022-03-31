@@ -1,5 +1,5 @@
 // Data
-import currencies from 'src/data/currencies';
+import currenciesList from 'src/data/currencies';
 
 // import Local:
 import './converter.scss';
@@ -23,7 +23,7 @@ function Converter() {
         currency="euro"
       />
       <Currencies
-        currencies={currencies}
+        currencies={currenciesList}
       />
       <Amount
         toConvert={toConvert}
