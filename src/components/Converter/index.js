@@ -7,7 +7,7 @@ import './converter.scss';
 // les composants à venir
 import Header from '../Header';
 import Currencies from '../Main';
-import Footer from '../Footer';
+import Amount from '../Footer';
 
 // montant à convertir
 const toConvert = 1;
@@ -25,7 +25,7 @@ function Converter() {
       <Currencies
         currencies={currencies}
       />
-      <Footer
+      <Amount
         toConvert={toConvert}
         rate={1.5}
         currency={currencyToConvert}

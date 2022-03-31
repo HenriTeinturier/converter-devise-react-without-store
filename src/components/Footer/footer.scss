@@ -1,13 +1,13 @@
 @use 'src/styles/vars';
 
-.footer {
+.amount {
   background-color: vars.$ClaireColor;
   height: 180px;
   color: vars.$PrincipaleColor;
   text-align: center;
   padding-top: 50px;
 
-  &-result {
+  &-value {
     font-size: 2.5rem;
     font-weight: 700;
     padding-bottom: 1rem;
