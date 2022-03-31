@@ -9,6 +9,8 @@ import Footer from '../Footer';
 
 // montant à convertir
 const toConvert = 1;
+// temporaire: currencyToConvert
+const currencyToConvert = 'Unidted States Dollar';
 
 // == Composant
 function Converter() {
@@ -24,7 +26,7 @@ function Converter() {
       <Footer
         toConvert={toConvert}
         rate={1.5}
-        currency="United States Dollar"
+        currency={currencyToConvert}
       />
     </div>
   );
