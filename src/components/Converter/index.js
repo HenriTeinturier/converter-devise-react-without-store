@@ -16,18 +16,20 @@ const currencyToConvert = 'Unidted States Dollar';
 
 // == Composant
 function Converter() {
+  // permet de  faire affichage conditionnel
+  // ici isOpen pour le composant Currencies
+  const isOpen = true;
+
   return (
     <div className="converter">
       <Header
         amountToConvert={amountToConvert}
         currency="euro"
       />
-      <Currencies
-        currencies={currenciesList}
-      />
+      {isOpen && <Currencies currencies={currenciesList} />}
       <Amount
         amountToConvert={amountToConvert}
-        rate={1.5}
+        rate={1.69}
         currency={currencyToConvert}
       />
     </div>
