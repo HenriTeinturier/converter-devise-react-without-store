@@ -59,8 +59,9 @@ class Converter extends React.Component {
     this.state = {
       isOpen: false, // isOpen
       amountToConvert: 1, // base Amount
-      rate: 1.69, // rate // plus besoin car retrouvée dans fonction makeConversion.
-      // c'est mieux d'avoir le moins de chose possible dans le state pour un app maintenable plus facilement.
+      // rate: 1.69, // rate // plus besoin car retrouvée dans fonction makeConversion.
+      // c'est mieux d'avoir le moins de chose possible dans le state
+      // pour un app maintenable plus facilement.
       currencyToConvert: 'United States Dollar', // currency
     };
 
@@ -76,7 +77,8 @@ class Converter extends React.Component {
     // donc necessaire si onClick{this.handleClick}
     // et pas necessaire si: onClick={() => this.handleClick()}
     this.handleClick = this.handleClick.bind(this);
-    this.handleClickDevise = this.handleClickDevise.bind(this);
+    // this.handleClickDevise = this.handleClickDevise.bind(this);
+    this.handleCurrencyClick = this.handleCurrencyClick.bind(this);
     // ceci n'est pas lié à React mais de façon general à la gestion des this de js
   }
 
@@ -94,15 +96,19 @@ class Converter extends React.Component {
     });
   }
 
-  handleClickDevise(rate, name) {
-    this.setState({
-      rate: rate,
-      currencyToConvert: name,
-    });
-  }
+  // handleClickDevise(rate, name) {
+  //   this.setState({
+  //     rate: rate,
+  //     currencyToConvert: name,
+  //   });
+  // }
 
-  handleCurrencyClick() {
-    console.log('fonction chargée');
+  handleCurrencyClick(name) {
+    // l'objectif dest de changer le sdtate currencyToConvert
+    // on doit donc utiliser setState.
+    // la fonction makeConversion se chargera avec la mise à jour du DOM avec ce nouveau state.
+    // console.log(name);
+    this.setState({ currencyToConvert: name });
   }
 
   makeConversion() {
@@ -125,11 +131,10 @@ class Converter extends React.Component {
   render() {
     // le linter nous previent qu'il faut faire du desctructuring avec this.state.isOpen
     const {
-      isOpen, amountToConvert, currencyToConvert, rate,
+      isOpen, amountToConvert, currencyToConvert,
     } = this.state;
 
     const result = this.makeConversion();
-    console.log(result);
 
     return (
       <div className="converter">
@@ -138,7 +143,7 @@ class Converter extends React.Component {
           currency="euro"
         />
         <Toggle open={isOpen} handleClick={this.handleClick} />
-        {isOpen && <Currencies currencies={currenciesList} handleCurrencyClick={this.handleCurrencyClick} handleClickDevise={this.handleClickDevise} />}
+        {isOpen && <Currencies currencies={currenciesList} handleCurrencyClick={this.handleCurrencyClick} />}
         <Amount
           // amountToConvert={amountToConvert}
           result={result}

@@ -5,7 +5,7 @@ function Currency({ name, handleCurrencyClick }) {
   return (
     <li
       className="currencies-currencies-item"
-      onClick={handleCurrencyClick}
+      onClick={() => handleCurrencyClick(name)}
     >
       {name}
     </li>

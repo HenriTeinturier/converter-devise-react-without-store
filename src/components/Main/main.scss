@@ -13,6 +13,18 @@
     border-bottom: 1px solid vars.$altColor ;
   }
 
+  &-search {
+    padding: vars.$gutter;
+    border: none;
+    width: 100%;
+    color: vars.$mainColor;
+    font-size: 1.2em;
+
+    &::placeholder {
+      color: vars.$altColor;
+    }
+  }
+
   &-currencies {
     
     &-item {
