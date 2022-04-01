@@ -84,6 +84,41 @@ class Converter extends React.Component {
     this.handleChangeSearch = this.handleChangeSearch.bind(this);
   }
 
+  componentDidMount() {
+    // ne fonctionne qu'avec lescomposants de type class
+    // se charge à la creation du premier DOM
+    console.log('mount');
+    document.addEventListener('keyup', (evt) => {
+      if (evt.key === 'Escape') {
+        this.setState({
+          isOpen: true,
+        });
+      }
+    });
+  }
+
+  componentDidUpdate() {
+    // ne fonctionne qu'avec lescomposants de type class
+    // donc si on veut le mettre sur un composant specifique 
+    // il faudrait qu'il soit sous forme de class
+    // se charge à chaque upadate du dom
+    // ne jamais changer le state dans cette fonction
+    // sinon boucle infinie
+    console.log('update');
+    const { isOpen, currencyToConvert } = this.state;
+    console.log(`converter: ${currencyToConvert}`);
+    document.title = `converter: ${currencyToConvert}`;
+
+    document.addEventListener('keyup', (evt) => {
+      if (evt.key === 'Escape') {
+        this.setState({
+          isOpen: !isOpen,
+          search: '',
+        });
+      }
+    });
+  }
+
   handleClick() {
     // this.setState({ isOpen: true });
     // if (this.state.isOpen) {
@@ -155,6 +190,8 @@ class Converter extends React.Component {
     return result;
   }
 
+  
+
   // Maintenant, pour lire une propriété du state, on fere :
   // this.state.isOpen
   // => On adapte donc l'affichage conditionnel en se basant sur notre state
@@ -170,7 +207,6 @@ class Converter extends React.Component {
     // contenu dans le state
 
     const filteredCurrencies = this.getFilteredCurrencies();
-    console.log(filteredCurrencies);
 
     return (
       <div className="converter">
