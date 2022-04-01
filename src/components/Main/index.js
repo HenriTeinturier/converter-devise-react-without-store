@@ -5,14 +5,23 @@ import Currency from './Currency';
 import './main.scss';
 
 // composant:
-function Currencies({ currencies, handleCurrencyClick }) {
+function Currencies({
+  currencies,
+  handleCurrencyClick,
+  searchValue,
+  setSearch,
+}) {
   return (
     <main className="currencies">
-      <h2 className="currencies-title">Currencies</h2>
+      {/* <h2 className="currencies-title">Currencies</h2> */}
       <input
         type="text"
         className="currencies-search"
         placeholder="Rechercher"
+        value={searchValue}
+        onChange={(event) => {
+          setSearch(event.currentTarget.value);
+        }}
       />
       <ul className="currencies-currencies">
         {currencies.map((currency) => (
@@ -34,6 +43,8 @@ function Currencies({ currencies, handleCurrencyClick }) {
 
 Currencies.propTypes = {
   handleCurrencyClick: PropTypes.func.isRequired,
+  searchValue: PropTypes.string.isRequired,
+  setSearch: PropTypes.func.isRequired,
   currencies: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,

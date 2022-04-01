@@ -63,6 +63,7 @@ class Converter extends React.Component {
       // c'est mieux d'avoir le moins de chose possible dans le state
       // pour un app maintenable plus facilement.
       currencyToConvert: 'United States Dollar', // currency
+      search: '',
     };
 
     // // montant à convertir
@@ -80,6 +81,7 @@ class Converter extends React.Component {
     // this.handleClickDevise = this.handleClickDevise.bind(this);
     this.handleCurrencyClick = this.handleCurrencyClick.bind(this);
     // ceci n'est pas lié à React mais de façon general à la gestion des this de js
+    this.handleChangeSearch = this.handleChangeSearch.bind(this);
   }
 
   handleClick() {
@@ -93,6 +95,13 @@ class Converter extends React.Component {
     const { isOpen } = this.state;
     this.setState({
       isOpen: !isOpen, // inverse la valeur de isOpen
+    });
+  }
+
+  handleChangeSearch(value) {
+    // Le but de ce handler est de modifier la donnée dans le state
+    this.setState({
+      search: value,
     });
   }
 
@@ -131,7 +140,7 @@ class Converter extends React.Component {
   render() {
     // le linter nous previent qu'il faut faire du desctructuring avec this.state.isOpen
     const {
-      isOpen, amountToConvert, currencyToConvert,
+      isOpen, amountToConvert, currencyToConvert, search,
     } = this.state;
 
     const result = this.makeConversion();
@@ -143,7 +152,7 @@ class Converter extends React.Component {
           currency="euro"
         />
         <Toggle open={isOpen} handleClick={this.handleClick} />
-        {isOpen && <Currencies currencies={currenciesList} handleCurrencyClick={this.handleCurrencyClick} />}
+        {isOpen && <Currencies currencies={currenciesList} handleCurrencyClick={this.handleCurrencyClick} searchValue={search} setSearch={this.handleChangeSearch} />}
         <Amount
           // amountToConvert={amountToConvert}
           result={result}
