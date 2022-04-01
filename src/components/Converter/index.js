@@ -130,6 +130,7 @@ class Converter extends React.Component {
     const { isOpen } = this.state;
     this.setState({
       isOpen: !isOpen, // inverse la valeur de isOpen
+      search: '',
     });
   }
 
@@ -152,7 +153,10 @@ class Converter extends React.Component {
     // on doit donc utiliser setState.
     // la fonction makeConversion se chargera avec la mise à jour du DOM avec ce nouveau state.
     // console.log(name);
-    this.setState({ currencyToConvert: name });
+    this.setState({
+      currencyToConvert: name,
+      search: '',
+    });
   }
 
   getFilteredCurrencies() {
@@ -190,7 +194,18 @@ class Converter extends React.Component {
     return result;
   }
 
-  
+  recupRate() {
+    // amount to convert = 1€ ou entrée par l'utilisateur
+    // currencyToConvert = devise choisie que l'on souhaite trouver le montant
+    const { currencyToConvert } = this.state;
+    // on recup les infos de la devis chooisie dans le tableau des devises.
+    const currencyData = currenciesList.find((item) => item.name === currencyToConvert);
+    // on extrait le taux de conversion
+    let { rate } = currencyData;
+    // on fait la conversion
+    rate = Math.round(rate * 100) / 100;
+    return rate;
+  }
 
   // Maintenant, pour lire une propriété du state, on fere :
   // this.state.isOpen
@@ -202,20 +217,21 @@ class Converter extends React.Component {
     } = this.state;
 
     const result = this.makeConversion();
-
+    const rate = this.recupRate();
     // on recup la liste des devises filtrées par rapport à l'entrée de l'utilisateur
     // contenu dans le state
 
     const filteredCurrencies = this.getFilteredCurrencies();
-
     return (
       <div className="converter">
         <Header
           amountToConvert={amountToConvert}
           currency="euro"
         />
+        {/* <Toggle open={isOpen} handleClick={this.handleClick} />
+        {isOpen && <Currencies currencies={filteredCurrencies} handleCurrencyClick={this.handleCurrencyClick} searchValue={search} setSearch={this.handleChangeSearch} />} */}
         <Toggle open={isOpen} handleClick={this.handleClick} />
-        {isOpen && <Currencies currencies={filteredCurrencies} handleCurrencyClick={this.handleCurrencyClick} searchValue={search} setSearch={this.handleChangeSearch} />}
+        {<Currencies currencies={filteredCurrencies} rate={rate} isOpen={isOpen} handleCurrencyClick={this.handleCurrencyClick} searchValue={search} setSearch={this.handleChangeSearch} />}
         <Amount
           // amountToConvert={amountToConvert}
           result={result}

@@ -10,13 +10,26 @@ function Currencies({
   handleCurrencyClick,
   searchValue,
   setSearch,
+  isOpen,
+  rate,
 }) {
+  console.log(rate);
+  let cssClass;
+  let cssClassSearch;
+  if (isOpen === true) {
+    cssClass = 'currencies currency--open';
+    cssClassSearch = 'currencies-search--open';
+  } else {
+    cssClass = 'currencies';
+    cssClassSearch = 'currencies-search';
+  }
+
   return (
-    <main className="currencies">
+    <main className={cssClass}>
       {/* <h2 className="currencies-title">Currencies</h2> */}
       <input
         type="text"
-        className="currencies-search"
+        className={cssClassSearch}
         placeholder="Rechercher"
         value={searchValue}
         onChange={(event) => {
@@ -45,6 +58,8 @@ Currencies.propTypes = {
   handleCurrencyClick: PropTypes.func.isRequired,
   searchValue: PropTypes.string.isRequired,
   setSearch: PropTypes.func.isRequired,
+  isOpen: PropTypes.bool.isRequired,
+  rate: PropTypes.number.isRequired,
   currencies: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,

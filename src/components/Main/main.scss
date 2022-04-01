@@ -1,46 +1,107 @@
 @use 'src/styles/vars';
 
 
-.currencies {
+.currencies { // balise principale
   overflow-y: scroll;
-  height: 330px;
+  height: 0px;
   color: vars.$mainColor;
   font-size: 1.5rem;
   font-weight: 500;
+  box-shadow:
+    inset 0px 11px 8px -12px vars.$altColor,
+    inset 0px -11px 8px -12px vars.$altColor;
+  transition: height vars.$slowTransition ease-in-out;
+  position: relative;
   
-  &-title {
-    padding: 1.5rem 1rem 1rem 1rem;
+  
+  
+  &-title { // n'existe plus
+    padding: 1.5rem ;
     border-bottom: 1px solid vars.$altColor ;
   }
 
-  &-search {
+  &-search { // ligne de recherche
+    
     padding: vars.$gutter;
     border: none;
-    width: 100%;
-    color: vars.$mainColor;
-    font-size: 1.2em;
+    width: 485px;
+    
+    font-size: 24px;
+    height: 0px;
+    transition: height 2s;
+    
+    
+    
+
+    
+    &--open {
+      position: sticky;
+      top: 0; /* Don't forget this, required for the stickiness */
+      padding: vars.$gutter;
+      border: none;
+      width: 485px;
+      color: vars.$mainColor;
+      font-size: 24px;
+      height: 60px;
+      
+     
+      
+      
+      
+      
+      
+      
+      
+    }
+    // display: none;
 
     &::placeholder {
       color: vars.$altColor;
     }
   }
 
-  &-currencies {
+  &-currencies { // div qui englobe les ligens devises
     
-    &-item {
+    
+
+    &-item { // lignes des devies
       padding: 1rem;
       border-bottom: 1px solid vars.$altColor ;
       transition: background-color 1s;
       cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+
+      &-rate {
+        opacity: 0;
+        transition: opacity 1s;
+      }
+      
+      &:hover {
+        
+        .currencies-currencies-item-rate {
+          opacity: 1;
+          transition: opacity 1s;
+        }
+
+      }
      
       
   }
     &-item:hover {
       background-color: vars.$altColor;
-      transition: background-color 0.2s;
+      transition: background-color 0.5s;
     }
   }
 
 }
+
+
+.currency--open {
+  height: 500px;
+  position: relative;
+  // transition: height vars.$slowTransition ease-in-out;
+}
+
 
 
