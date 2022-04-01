@@ -5,13 +5,13 @@ import Currency from './Currency';
 import './main.scss';
 
 // composant:
-function Currencies({ currencies, handleClickDevise }) {
+function Currencies({ currencies, handleClickDevise, handleCurrencyClick }) {
   return (
     <main className="currencies">
       <h2 className="currencies-title">Currencies</h2>
       <ul className="currencies-currencies">
         {currencies.map((currency) => (
-          <Currency {...currency} key={currency.name} handleClickDevise={handleClickDevise} />
+          <Currency {...currency} key={currency.name} handleCurrencyClick={handleCurrencyClick} handleClickDevise={handleClickDevise} />
           /* {<li
             className="currencies-currencies-item"
             key={currency.name}
@@ -29,6 +29,7 @@ function Currencies({ currencies, handleClickDevise }) {
 
 Currencies.propTypes = {
   handleClickDevise: PropTypes.func.isRequired,
+  handleCurrencyClick: PropTypes.func.isRequired,
   currencies: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,

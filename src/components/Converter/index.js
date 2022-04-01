@@ -101,6 +101,10 @@ class Converter extends React.Component {
     });
   }
 
+  handleCurrencyClick() {
+    console.log('fonction chargée');
+  }
+
   makeConversion() {
     // amount to convert = 1€ ou entrée par l'utilisateur
     // currencyToConvert = devise choisie que l'on souhaite trouver le montant
@@ -134,7 +138,7 @@ class Converter extends React.Component {
           currency="euro"
         />
         <Toggle open={isOpen} handleClick={this.handleClick} />
-        {isOpen && <Currencies currencies={currenciesList} handleClickDevise={this.handleClickDevise} />}
+        {isOpen && <Currencies currencies={currenciesList} handleCurrencyClick={this.handleCurrencyClick} handleClickDevise={this.handleClickDevise} />}
         <Amount
           // amountToConvert={amountToConvert}
           result={result}

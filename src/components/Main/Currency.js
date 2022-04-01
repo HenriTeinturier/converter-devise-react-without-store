@@ -1,13 +1,11 @@
 import PropTypes from 'prop-types';
 
 // composant:
-function Currency({ rate, name, handleClickDevise }) {
+function Currency({ name, handleCurrencyClick }) {
   return (
     <li
       className="currencies-currencies-item"
-      onClick={() => {
-        handleClickDevise(rate, name);
-      }}
+      onClick={handleCurrencyClick}
     >
       {name}
     </li>
@@ -16,8 +14,9 @@ function Currency({ rate, name, handleClickDevise }) {
 
 Currency.propTypes = {
   name: PropTypes.string.isRequired,
-  rate: PropTypes.number.isRequired,
-  handleClickDevise: PropTypes.func.isRequired,
+  // rate: PropTypes.number.isRequired,
+  // handleClickDevise: PropTypes.func.isRequired,
+  handleCurrencyClick: PropTypes.func.isRequired,
 };
 
 // export
