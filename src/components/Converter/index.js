@@ -120,6 +120,27 @@ class Converter extends React.Component {
     this.setState({ currencyToConvert: name });
   }
 
+  getFilteredCurrencies() {
+    // fonction qui retourne la liste des devises par rapport aux critères de recherche
+    // critères de recherche: le state
+    // pour filtrer les devies on a besoin du critere de l'utilisateur
+    // c 'est a dire la valeur de la propriete search du state
+    const { search } = this.state;
+    let filteredCurrencies = currenciesList;
+
+    if (search.length > 0) {
+      // alors on filtre en fonction du critere de recherche
+      filteredCurrencies = filteredCurrencies.filter((item) => {
+        const nameLowerCase = item.name.toLowerCase();
+        const inputSearchLowerCase = search.toLowerCase();
+        // item.name.includes(search);
+        return nameLowerCase.includes(inputSearchLowerCase);
+      });
+    }
+    // si pas d input on renvoi le tableau complet des occurences
+    return filteredCurrencies;
+  }
+
   makeConversion() {
     // amount to convert = 1€ ou entrée par l'utilisateur
     // currencyToConvert = devise choisie que l'on souhaite trouver le montant
@@ -145,6 +166,12 @@ class Converter extends React.Component {
 
     const result = this.makeConversion();
 
+    // on recup la liste des devises filtrées par rapport à l'entrée de l'utilisateur
+    // contenu dans le state
+
+    const filteredCurrencies = this.getFilteredCurrencies();
+    console.log(filteredCurrencies);
+
     return (
       <div className="converter">
         <Header
@@ -152,7 +179,7 @@ class Converter extends React.Component {
           currency="euro"
         />
         <Toggle open={isOpen} handleClick={this.handleClick} />
-        {isOpen && <Currencies currencies={currenciesList} handleCurrencyClick={this.handleCurrencyClick} searchValue={search} setSearch={this.handleChangeSearch} />}
+        {isOpen && <Currencies currencies={filteredCurrencies} handleCurrencyClick={this.handleCurrencyClick} searchValue={search} setSearch={this.handleChangeSearch} />}
         <Amount
           // amountToConvert={amountToConvert}
           result={result}
