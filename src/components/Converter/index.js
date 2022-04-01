@@ -57,10 +57,11 @@ class Converter extends React.Component {
     super(props);
     // On crée notre state ici
     this.state = {
-      isOpen: false,
-      amountToConvert: 1,
-      rate: 1.69,
-      currencyToConvert: 'United States Dollar',
+      isOpen: false, // isOpen
+      amountToConvert: 1, // base Amount
+      rate: 1.69, // rate // plus besoin car retrouvée dans fonction makeConversion.
+      // c'est mieux d'avoir le moins de chose possible dans le state pour un app maintenable plus facilement.
+      currencyToConvert: 'United States Dollar', // currency
     };
 
     // // montant à convertir
@@ -100,6 +101,20 @@ class Converter extends React.Component {
     });
   }
 
+  makeConversion() {
+    // amount to convert = 1€ ou entrée par l'utilisateur
+    // currencyToConvert = devise choisie que l'on souhaite trouver le montant
+    const { amountToConvert, currencyToConvert } = this.state;
+    // on recup les infos de la devis chooisie dans le tableau des devises.
+    const currencyData = currenciesList.find((item) => item.name === currencyToConvert);
+    // on extrait le taux de conversion
+    const { rate } = currencyData;
+    // on fait la conversion
+    const result = Math.round(amountToConvert * rate * 100) / 100;
+    // ou  .toFixed(2) mais renvoi un string
+    return result;
+  }
+
   // Maintenant, pour lire une propriété du state, on fere :
   // this.state.isOpen
   // => On adapte donc l'affichage conditionnel en se basant sur notre state
@@ -108,6 +123,10 @@ class Converter extends React.Component {
     const {
       isOpen, amountToConvert, currencyToConvert, rate,
     } = this.state;
+
+    const result = this.makeConversion();
+    console.log(result);
+
     return (
       <div className="converter">
         <Header
@@ -117,8 +136,8 @@ class Converter extends React.Component {
         <Toggle open={isOpen} handleClick={this.handleClick} />
         {isOpen && <Currencies currencies={currenciesList} handleClickDevise={this.handleClickDevise} />}
         <Amount
-          amountToConvert={amountToConvert}
-          rate={rate}
+          // amountToConvert={amountToConvert}
+          result={result}
           currency={currencyToConvert}
         />
       </div>
