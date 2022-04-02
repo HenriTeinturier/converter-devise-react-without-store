@@ -11,9 +11,8 @@ function Currencies({
   searchValue,
   setSearch,
   isOpen,
-  rate,
+  // rate,
 }) {
-  console.log(rate);
   let cssClass;
   let cssClassSearch;
   if (isOpen === true) {
@@ -59,7 +58,7 @@ Currencies.propTypes = {
   searchValue: PropTypes.string.isRequired,
   setSearch: PropTypes.func.isRequired,
   isOpen: PropTypes.bool.isRequired,
-  rate: PropTypes.number.isRequired,
+  // rate: PropTypes.number.isRequired,
   currencies: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,

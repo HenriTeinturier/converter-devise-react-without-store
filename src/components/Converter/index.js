@@ -58,7 +58,7 @@ class Converter extends React.Component {
     // On crée notre state ici
     this.state = {
       isOpen: false, // isOpen
-      amountToConvert: 1, // base Amount
+      amountToConvert: 10, // base Amount
       // rate: 1.69, // rate // plus besoin car retrouvée dans fonction makeConversion.
       // c'est mieux d'avoir le moins de chose possible dans le state
       // pour un app maintenable plus facilement.
@@ -82,6 +82,7 @@ class Converter extends React.Component {
     this.handleCurrencyClick = this.handleCurrencyClick.bind(this);
     // ceci n'est pas lié à React mais de façon general à la gestion des this de js
     this.handleChangeSearch = this.handleChangeSearch.bind(this);
+    this.handleChangeAmountToConvert = this.handleChangeAmountToConvert.bind(this);
   }
 
   componentDidMount() {
@@ -141,6 +142,10 @@ class Converter extends React.Component {
     });
   }
 
+  handleChangeAmountToConvert(value) {
+    console.log(value)
+  }
+
   // handleClickDevise(rate, name) {
   //   this.setState({
   //     rate: rate,
@@ -194,18 +199,18 @@ class Converter extends React.Component {
     return result;
   }
 
-  recupRate() {
-    // amount to convert = 1€ ou entrée par l'utilisateur
-    // currencyToConvert = devise choisie que l'on souhaite trouver le montant
-    const { currencyToConvert } = this.state;
-    // on recup les infos de la devis chooisie dans le tableau des devises.
-    const currencyData = currenciesList.find((item) => item.name === currencyToConvert);
-    // on extrait le taux de conversion
-    let { rate } = currencyData;
-    // on fait la conversion
-    rate = Math.round(rate * 100) / 100;
-    return rate;
-  }
+  // recupRate() {
+  //   // amount to convert = 1€ ou entrée par l'utilisateur
+  //   // currencyToConvert = devise choisie que l'on souhaite trouver le montant
+  //   const { currencyToConvert } = this.state;
+  //   // on recup les infos de la devis chooisie dans le tableau des devises.
+  //   const currencyData = currenciesList.find((item) => item.name === currencyToConvert);
+  //   // on extrait le taux de conversion
+  //   let { rate } = currencyData;
+  //   // on fait la conversion
+  //   rate = Math.round(rate * 100) / 100;
+  //   return rate;
+  // }
 
   // Maintenant, pour lire une propriété du state, on fere :
   // this.state.isOpen
@@ -217,7 +222,7 @@ class Converter extends React.Component {
     } = this.state;
 
     const result = this.makeConversion();
-    const rate = this.recupRate();
+    // const rate = this.recupRate();
     // on recup la liste des devises filtrées par rapport à l'entrée de l'utilisateur
     // contenu dans le state
 
@@ -227,11 +232,12 @@ class Converter extends React.Component {
         <Header
           amountToConvert={amountToConvert}
           currency="euro"
+          setAmountToConvert={this.handleChangeAmountToConvert}
         />
         {/* <Toggle open={isOpen} handleClick={this.handleClick} />
         {isOpen && <Currencies currencies={filteredCurrencies} handleCurrencyClick={this.handleCurrencyClick} searchValue={search} setSearch={this.handleChangeSearch} />} */}
         <Toggle open={isOpen} handleClick={this.handleClick} />
-        {<Currencies currencies={filteredCurrencies} rate={rate} isOpen={isOpen} handleCurrencyClick={this.handleCurrencyClick} searchValue={search} setSearch={this.handleChangeSearch} />}
+        {<Currencies currencies={filteredCurrencies}  isOpen={isOpen} handleCurrencyClick={this.handleCurrencyClick} searchValue={search} setSearch={this.handleChangeSearch} />}
         <Amount
           // amountToConvert={amountToConvert}
           result={result}

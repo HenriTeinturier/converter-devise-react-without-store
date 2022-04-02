@@ -2,7 +2,7 @@
 
 .header {
   background-color: vars.$mainColor;
-  height: 180px;
+  height: 250px;
   color: vars.$lightColor;
   text-align: center;
   padding-top: 50px;
@@ -13,9 +13,35 @@
     padding-bottom: 1rem;
   }
 
-  &-amount {
-    font-size: 1.5em;
-    font-weight: 300;
+  &-toconvert {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    &-amount {
+      font-size: 1.5em;
+      font-weight: 300;
+      width: 100%;
+      padding: 8px;
+
+    }
+
+    &-search {
+      padding: vars.$gutter;
+      border: none;
+      width: 120px;
+      text-align: center;
+      font-size: 16px;
+      color: vars.$mainColor;
+      font-weight: 800;
+
+     
+      &:focus {
+        background-color: lightsteelblue;
+      }
+
+    }
+
   }
 
 }

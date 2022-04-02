@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 // composant:
 function Currency({ name, handleCurrencyClick, rate }) {
   rate = Math.round(rate * 100) / 100;
-  console.log(rate);
+  
   return (
     <li
       className="currencies-currencies-item"
