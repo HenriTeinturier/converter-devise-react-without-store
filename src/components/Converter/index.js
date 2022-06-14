@@ -6,7 +6,6 @@ import currenciesList from 'src/data/currencies';
 // import Local:
 import './converter.scss';
 
-
 // les composants à venir
 import Header from '../Header';
 import Currencies from '../Main';
@@ -39,7 +38,6 @@ import Toggle from '../Toggle';
 //     </div>
 //   );
 // }
-
 
 //* Transformation en class
 //* extends React.component + ajouter un render pour la partie JSX
@@ -100,7 +98,7 @@ class Converter extends React.Component {
 
   componentDidUpdate() {
     // ne fonctionne qu'avec lescomposants de type class
-    // donc si on veut le mettre sur un composant specifique 
+    // donc si on veut le mettre sur un composant specifique
     // il faudrait qu'il soit sous forme de class
     // se charge à chaque upadate du dom
     // ne jamais changer le state dans cette fonction
@@ -143,7 +141,10 @@ class Converter extends React.Component {
   }
 
   handleChangeAmountToConvert(value) {
-    console.log(value)
+    console.log(value);
+    this.setState({
+      amountToConvert: value,
+    });
   }
 
   // handleClickDevise(rate, name) {
@@ -237,7 +238,7 @@ class Converter extends React.Component {
         {/* <Toggle open={isOpen} handleClick={this.handleClick} />
         {isOpen && <Currencies currencies={filteredCurrencies} handleCurrencyClick={this.handleCurrencyClick} searchValue={search} setSearch={this.handleChangeSearch} />} */}
         <Toggle open={isOpen} handleClick={this.handleClick} />
-        {<Currencies currencies={filteredCurrencies}  isOpen={isOpen} handleCurrencyClick={this.handleCurrencyClick} searchValue={search} setSearch={this.handleChangeSearch} />}
+        <Currencies currencies={filteredCurrencies} isOpen={isOpen} handleCurrencyClick={this.handleCurrencyClick} searchValue={search} setSearch={this.handleChangeSearch} />
         <Amount
           // amountToConvert={amountToConvert}
           result={result}
