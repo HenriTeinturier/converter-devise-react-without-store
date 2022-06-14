@@ -107,8 +107,8 @@ class Converter extends React.Component {
     if (search.length > 0) {
       // alors on filtre en fonction du critere de recherche
       filteredCurrencies = filteredCurrencies.filter((item) => {
-        // pour faciliter la recherche on applique à chaque devise et à la recherche utilisateur
-        // un toLowerCase()
+        // pour faciliter la recherche on applique à chaque devise
+        // et à la recherche utilisateur un toLowerCase()
         const nameLowerCase = item.name.toLowerCase();
         const inputSearchLowerCase = search.toLowerCase();
         // si la réponse est true alors la devise est ajoutée au tableau filteredCurrencies
