@@ -4,8 +4,6 @@ import './footer.scss';
 
 // composant:
 function Amount({ result, currency }) {
-  // console.log(amountToConvert, rate, currency);
-  // const result = Math.round((amountToConvert * rate) * 100) / 100;
   return (
     <footer className="amount">
       <p className="amount-value">{result}</p>

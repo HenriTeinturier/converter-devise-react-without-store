@@ -11,21 +11,20 @@ function Currencies({
   searchValue,
   setSearch,
   isOpen,
-  // rate,
 }) {
   let cssClass;
   let cssClassSearch;
   if (isOpen === true) {
     cssClass = 'currencies currency--open';
     cssClassSearch = 'currencies-search--open';
-  } else {
+  }
+  else {
     cssClass = 'currencies';
     cssClassSearch = 'currencies-search';
   }
 
   return (
     <main className={cssClass}>
-      {/* <h2 className="currencies-title">Currencies</h2> */}
       <input
         type="text"
         className={cssClassSearch}
@@ -38,15 +37,6 @@ function Currencies({
       <ul className="currencies-currencies">
         {currencies.map((currency) => (
           <Currency {...currency} key={currency.name} handleCurrencyClick={handleCurrencyClick} />
-          /* {<li
-            className="currencies-currencies-item"
-            key={currency.name}
-            onClick={() => {
-              console.log(currency.rate, currency.name);
-            }}
-          >
-            {currency.name}
-          </li>} */
         ))}
       </ul>
     </main>
@@ -58,11 +48,9 @@ Currencies.propTypes = {
   searchValue: PropTypes.string.isRequired,
   setSearch: PropTypes.func.isRequired,
   isOpen: PropTypes.bool.isRequired,
-  // rate: PropTypes.number.isRequired,
   currencies: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
-      // rate: PropTypes.number.isRequired,
     }).isRequired,
   ).isRequired,
 };

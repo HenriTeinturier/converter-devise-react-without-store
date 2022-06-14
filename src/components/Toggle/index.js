@@ -5,9 +5,7 @@ import './toggle.scss';
 
 // == Composant
 function Toggle({ open, handleClick }) {
-  // on récupère le state.isOpen avec la props open
   let cssClass;
-  // handleClick();
   if (open) {
     cssClass = 'toggle toggle--open';
   }

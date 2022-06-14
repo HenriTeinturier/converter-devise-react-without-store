@@ -17,9 +17,7 @@ function Header({ amountToConvert, currency, setAmountToConvert }) {
           value={amountToConvert}
           onChange={(event) => {
             setAmountToConvert(event.currentTarget.value);
-          }
-
-          }
+          }}
         />
         <p className="header-toconvert-amount">{currency}</p>
       </div>
